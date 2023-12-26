@@ -7,7 +7,7 @@ export const Section = styled.section`
 `;
 
 export const Container = styled.div`
-  max-width: 900px;
+  max-width: 1400px;
   min-height: 700px;
   margin-left: auto;
   margin-right: auto;
@@ -36,19 +36,6 @@ export const Title = styled.h1`
   margin-top: 16px;
   margin-bottom: 26px;
   text-align: center;
-`;
-
-export const LoaderWrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* background: rgba(255, 255, 255, 0.8); */
-  /* z-index: 1; */
 `;
 
 export const StyledLink = styled(NavLink)`
