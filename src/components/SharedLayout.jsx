@@ -1,20 +1,16 @@
-import toast, { Toaster } from 'react-hot-toast';
+// import toast, { Toaster } from 'react-hot-toast';
 import {
-  Section,
-  SectionHeader,
-  SectionMain,SectionFooter,
+  SectionHeader,SectionFooter,
   Container,
-  MainWraper,
   ItemLink,
   ListLink,
   StyledLink,
 } from './SharedLayout.styled';
 import { Outlet } from 'react-router-dom';
-import aaa from '../hero.jpg';
 
 export const AppLayout = () => {
-  const notify = () => toast('Here is your toast.');
-  console.log(aaa);
+  // const notify = () => toast('Here is your toast.');
+  
   return (
     <>
       <header>
@@ -44,7 +40,7 @@ export const AppLayout = () => {
         </SectionFooter>
       </footer>
 
-      <Toaster />
+      {/* <Toaster /> */}
     </>
   );
 };
