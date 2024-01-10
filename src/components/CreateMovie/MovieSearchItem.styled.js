@@ -2,52 +2,39 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const NameMov = styled.span`
-  background-color: #333;
-  min-width: 230px;
+  margin-top: 10px;
+  text-align: center;
+  max-width: 270px;
   color: white;
-  padding: 0 10px;
-  font-size: 26px;
+  font-size: 22px;
   font-weight: bold;
-  position: absolute;
-  top: 10%;
+
+
   left: 40px;
-  opacity: 0;
-  transition: 1s all ease-in-out;
+  opacity: 0.7;
+  
 `;
 
 export const DescriptionMov = styled.p`
-  background-color: #333;
   color: white;
-  padding: 10px;
   font-size: 14px;
-  position: absolute;
-  top: 60%;
-  left: 40px;
-  width: 230px;
-  opacity: 0;
+  max-width: 270px;
+  opacity: 0.7;
   transition: 1s all ease-in-out;
+  margin-bottom: auto;
 `;
 
 export const MovieItemStyle = styled.div`
-  display: block;
-  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
   min-width: 270px;
-  height: 200px;
-  position: relative;
+  border: 2px solid grey;
+  border-radius: 30px;
+  height: 350px;
   transition: all 1s ease-in-out;
 
-  &:hover {
-    ${NameMov}, ${DescriptionMov} {
-      opacity: 1;
-    }
-  }
-
-  &:hover {
-    transform: scale(1.2);
-    margin: 0 30px;
-    opacity: 0.5;
-    margin-right: 55px;
-  }
+ 
 `;
 
 export const ImgMovie = styled.img`
@@ -60,4 +47,5 @@ export const ImgMovie = styled.img`
 
 export const LinkStyle = styled(Link)`
   text-transform: none;
+  text-decoration: none;
 `;

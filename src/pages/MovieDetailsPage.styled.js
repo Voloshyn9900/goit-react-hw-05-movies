@@ -10,12 +10,12 @@ export const HeroCont = styled.div`
 
   /* height: 80vh;  !!!!!*/
   height: 100vh;
-  padding: 50px 0px 50px 50px;
+  padding: 60px 0px 50px 50px;
 
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
     url(${imgHero});
   /* background-size: cover; */
-  background-position: center; 
+  background-position: center;
 
   /* @media (max-width: 768px) {
     background-position: left; 
@@ -24,7 +24,6 @@ export const HeroCont = styled.div`
 
 export const Title = styled.p`
   width: 80%;
-  margin-bottom: 20px;
   font-size: 56px;
   color: rgb(236, 50, 38);
   font-weight: 800;
@@ -51,7 +50,6 @@ export const Wraper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
 `;
 
 export const ImgMovie = styled.img`
@@ -83,3 +81,18 @@ export const ListLink = styled.ul`
 `;
 
 export const ItemLink = styled.li``;
+
+export const LinkBack = styled(NavLink)`
+  position: absolute;
+  top: 70px;
+  left: 70px;
+  text-decoration: none;
+  background-color: rgba(21, 21, 21, 0.4);
+  font-size: 18px;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+`;

@@ -1,47 +1,72 @@
 // import React, { useEffect, useState } from 'react';
 import { fetchSerchMovies } from 'api';
-import { MovieList } from 'components/CreateMovie/MovieList';
-import { HeroCont, Title, Text, BtnHero } from './MoviesPage.styled';
+import { MovieList } from 'components/CreateMovie/MovieSearchList';
+import {
+  HeroCont,
+  Title,
+  Text,
+  BtnSearch,
+  InputSearch,
+  InputWraper,
+  WarningMsg,
+} from './MoviesPage.styled';
 import { useState, useEffect } from 'react';
 
 export default function MoviesPage() {
+  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
-  const thisWeekTitle = 'NEW POPULAR LIST THIS WEEK';
+  const [submitted, setSubmitted] = useState(false);
+  const messageTitle = `No movies found for keyword '${query}'`;
 
-  const query = 'dog';
-  useEffect(() => {
-    const getSerchMovies = async () => {
-      try {
-        const response = await fetchSerchMovies(query);
-        setMovies(response.results);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const getSerchMovies = async () => {
+    try {
+      const response = await fetchSerchMovies(query);
+      setMovies(response.results);
+      setSubmitted(true); 
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const updateTopic = e => {
+    setQuery(e.target.value);
+  };
+
+  const submitTopic = e => {
+    e.preventDefault();
+    setSubmitted(false);
     getSerchMovies();
-  }, []);
+  };
 
-setTimeout(() => {
   console.log(movies);
-}, 2000);
-
+  console.log(query);
   return (
     <>
       <HeroCont>
-        <Title>popular</Title>
+        <Title>find your movie</Title>
         <Text>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit
           dignissimos iste, officiis nulla, necessitatibus sunt nostrum, cumque
           laudantium distinctio unde ex aliquid possimus eos accusantium illo
           dicta. Dolores, provident harum.
         </Text>
-        <BtnHero>Watch</BtnHero>
+        <form onSubmit={submitTopic}>
+          <InputWraper>
+            <InputSearch
+              value={query}
+              type="text"
+              placeholder="Movie title"
+              onChange={e => updateTopic(e)}
+            />
+            <BtnSearch type="submit">Search</BtnSearch>
+          </InputWraper>
+        </form>
       </HeroCont>
-      {movies ? (
-        <MovieList movies={movies} titleMasege={thisWeekTitle} />
-      ) : (
-        <div>"111"</div>
-      )}
+      {submitted && movies.length > 0 ? (
+        <MovieList movies={movies} />
+      ) : submitted ? (
+        <WarningMsg>{messageTitle}</WarningMsg>
+      ) : null}
     </>
   );
 }

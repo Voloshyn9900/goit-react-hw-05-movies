@@ -29,13 +29,51 @@ export const Text = styled.p`
   font-family: 'Roboto', sans-serif;
 `;
 
-export const BtnHero = styled.button`
-  background-color: #4dbf00;
-  font-size: 18px;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  font-weight: bold;
+export const WarningMsg = styled.p`
+  margin-left: 50px;
+  font-size: 20px;
+  max-width: 500px;
+  font-weight: 500;
+  color: lightgray;
+  font-family: 'Roboto', sans-serif;
 `;
+
+
+
+export const InputWraper = styled.div`
+  display: flex;
+  font-size: 20px;
+`;
+
+  export const BtnSearch = styled.button`
+    background-color: #4dbf00;
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+    border: solid 3px lightgray;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-left: none;
+    outline: none;
+    font-weight: bold;
+  `;
+
+  export const InputSearch = styled.input`
+    background-color: inherit;
+    font-size: 20px;
+    color: white;
+    padding: 10px 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+    border: solid 3px lightgray;
+    border-right: none;
+    /* outline: none; */
+    font-weight: bold;
+
+    &:focus-visible {
+      /* Добавьте стили для активированного состояния, если нужно */
+      outline: none; /* Убираем внутреннюю обводку в Chrome и Firefox */
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Пример тени вокруг инпута */
+    }
+  `;

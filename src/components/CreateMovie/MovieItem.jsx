@@ -31,16 +31,3 @@ export const MovieItem = ({ movies }) => {
   );
 };
 
-// {
-//   movies.map(movie => (
-//     <ItemList key={movie.id}>
-//       <Link to={`/list/${movie.id}`}>
-//         <p>{movie.title || movie.name}</p>
-//       </Link>
-//       <Img
-//         src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
-//         alt={movie.title || movie.name}
-//       />
-//     </ItemList>
-//   ));
-// }

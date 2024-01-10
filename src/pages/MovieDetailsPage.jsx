@@ -7,24 +7,27 @@ import {
   StyledLink,
   ItemLink,
   ListLink,
+  LinkBack,
 } from './MovieDetailsPage.styled';
 import { useEffect, useState } from 'react';
 import { fetchGetMovieDetailsById } from '../api';
 import {
   Outlet,
-  // useLocation,
+  useLocation,
   useParams,
 } from 'react-router-dom';
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState();
 
+  const location = useLocation();
+  console.log('useLocation', location);
   // const location = useLocation();
   // console.log("location ", location);
   // const backLinkRef = useRef(location);
   // console.log('backLinkRef ', backLinkRef);
   const params = useParams();
-  // console.log('params ', params);
+  console.log('useParams ', params);
 
   // console.log('QuizDetailsPage location', location);
   // console.log('QuizDetailsPage backLinkRef', backLinkRef.current);
@@ -47,6 +50,7 @@ export default function MovieDetailsPage() {
       {movie ? (
         <HeroCont>
           <Wraper>
+            <LinkBack>Back to list</LinkBack>
             <Title>{movie.title}</Title>
             <ImgMovie
               src={`https://image.tmdb.org/t/p/w500/${
@@ -66,7 +70,7 @@ export default function MovieDetailsPage() {
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit
               dignissimos iste, officiis nulla, necessitatibus sunt nostrum,
               cumque laudantium distinctio unde ex aliquid possimus eos
-              accusantium illo dicta. 
+              accusantium illo dicta.
             </Text>
             <ListLink>
               <ItemLink>

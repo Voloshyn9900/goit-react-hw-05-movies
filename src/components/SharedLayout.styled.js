@@ -4,6 +4,7 @@ import imgHero from '../hero.jpg';
 import { NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
+z-index: 5;
   width: 100%;
   height: 55px;
   background-color: black;
