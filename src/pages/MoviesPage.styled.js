@@ -32,7 +32,6 @@ export const Text = styled.p`
 export const WarningMsg = styled.p`
   margin-left: 50px;
   font-size: 20px;
-  max-width: 500px;
   font-weight: 500;
   color: lightgray;
   font-family: 'Roboto', sans-serif;

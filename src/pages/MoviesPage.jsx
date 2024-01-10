@@ -64,9 +64,7 @@ export default function MoviesPage() {
       </HeroCont>
       {submitted && movies.length > 0 ? (
         <MovieList movies={movies} />
-      ) : submitted ? (
-        <WarningMsg>{messageTitle}</WarningMsg>
-      ) : null}
+      ) : (<WarningMsg>No movie found for your request!</WarningMsg>)}
     </>
   );
 }
