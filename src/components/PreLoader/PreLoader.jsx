@@ -4,14 +4,14 @@ export const PreLoader = () => {
     return (
       <LoaderWrapper>
         <Oval
-          height={80}
-          width={80}
-          color="#2196f3"
+          height={120}
+          width={120}
+          color="#757575"
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}
           ariaLabel="oval-loading"
-          secondaryColor="#2196f3"
+          secondaryColor="#757575"
           strokeWidth={4}
           strokeWidthSecondary={2}
         />

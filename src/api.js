@@ -1,51 +1,36 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://656099a583aba11d99d129b6.mockapi.io/api/v1/';
 
-export const fetchQuizzes = async () => {
-  const response = await axios.get('/quiz');
+const API_KEY = 'dd5d66bbf58394e0dcdadd4fac230a49';
+axios.defaults.baseURL = `https://api.themoviedb.org/3`;
+
+export const fetchTrendMovies = async () => {
+  const response = await axios.get(`/trending/movie/day?api_key=${API_KEY}`);
   return response.data;
 };
 
-export const fetchQuizById = async quizId => {
-  const response = await axios.get(`/quiz/${quizId}`);
+export const fetchSerchMovies = async (query) => {
+  const response = await axios.get(
+    `/search/movie?query=${query}&api_key=${API_KEY}`
+  );
   return response.data;
 };
 
-export const addNewQuiz = async newQuiz => {
-  const response = await axios.post('/quiz', newQuiz);
+export const fetchGetMovieDetailsById = async (movieId) => {
+  const response = await axios.get(`/movie/${movieId}?api_key=${API_KEY}`);
   return response.data;
 };
 
-export const deleteQuizById = async quizId => {
-  const response = await axios.delete(`/quiz/${quizId}`);
+export const fetchGetMovieCastById = async movieId => {
+  const response = await axios.get(
+    `/movie/${movieId}/credits?api_key=${API_KEY}`
+  );
   return response.data;
 };
 
-export const updateQuiz = async (updateId, update) => {
-  const response = await axios.delete(`/quiz/${updateId}`, update);
+export const fetchGetMovieReviewsById = async movieId => {
+  const response = await axios.get(
+    `/movie/${movieId}/reviews?api_key=${API_KEY}`
+  );
   return response.data;
 };
-
-
-
-export const fetchM = async () => {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkZDVkNjZiYmY1ODM5NGUwZGNkYWRkNGZhYzIzMGE0OSIsInN1YiI6IjY1OGI0MWJmNjhiNzY2NjliMDJkNGQzNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.ijA9gyzi6xYVLvnBVtNAr12oBM0ZbpIsV-7t8lO1csk',
-      },
-    };
-
-    fetch(
-      'https://api.themoviedb.org/3/search/movie?query=avatar&include_adult=false&language=en-US&page=1',
-      options
-    )
-      .then(response => response.json())
-      .then(response => console.log(response))
-      .catch(err => console.error(err));
-
-}; 
-  

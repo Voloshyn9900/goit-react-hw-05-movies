@@ -1,46 +1,94 @@
-// import toast, { Toaster } from 'react-hot-toast';
 import {
-  SectionHeader,SectionFooter,
-  Container,
   ItemLink,
   ListLink,
   StyledLink,
+  Header,
+  Nav,
+  LogoCont,
+  Logo,
+  MenuCont,
+  ProfileCont,
+  ImgProfile,
+  Text,
+  Sidebar,Main,
+  MainWrap,
+  Footer,
+  ListIcon,
+  ItemIcon,
+  IconLink,
 } from './SharedLayout.styled';
+
+import { FaSearch, FaHome, FaUserFriends, FaHeart } from 'react-icons/fa';
+
 import { Outlet } from 'react-router-dom';
+import imgHero from '../img/Profile.jpg';
 
 export const AppLayout = () => {
-  // const notify = () => toast('Here is your toast.');
-  
   return (
     <>
-      <header>
-        <SectionHeader>
-          <Container>
-            <nav>
-              <ListLink>
-                <ItemLink>
-                  <StyledLink to={'/'}>Home</StyledLink>
-                </ItemLink>
-                <ItemLink>
-                  <StyledLink to={'/movies'}>Movies</StyledLink>
-                </ItemLink>
-              </ListLink>
-            </nav>
-          </Container>
-        </SectionHeader>
-      </header>
+      <Header>
+        <Nav>
+          <LogoCont>
+            <StyledLink to={'/'}>
+              <Logo>TimeMovies</Logo>
+            </StyledLink>
+          </LogoCont>
 
-      <main>
-        <Outlet />
-      </main>
+          <MenuCont>
+            <ListLink>
+              <ItemLink>
+                <StyledLink to={'/'}>Home</StyledLink>
+              </ItemLink>
+              <ItemLink>
+                <StyledLink to={'/movies'}>Movies</StyledLink>
+              </ItemLink>
+            </ListLink>
+          </MenuCont>
 
-      <footer>
-        <SectionFooter>
-          <Container></Container>
-        </SectionFooter>
-      </footer>
+          <ProfileCont>
+            <ImgProfile src={imgHero} alt="Profile" />
+            <Text>Profile</Text>
+          </ProfileCont>
+        </Nav>
+      </Header>
 
-      {/* <Toaster /> */}
+      <Sidebar>
+        <ListIcon>
+          <ItemIcon>
+            <IconLink to={'/'}>
+              <FaHome />
+            </IconLink>
+          </ItemIcon>
+
+          <ItemIcon>
+            <IconLink to={'/movies'}>
+              <FaSearch />
+            </IconLink>
+          </ItemIcon>
+
+          <ItemIcon>
+            {/* <IconLink to={'/movies'}> */}
+              <FaUserFriends />
+            {/* </IconLink> */}
+          </ItemIcon>
+
+          <ItemIcon>
+            {/* <IconLink to={'/movies'}> */}
+              <FaHeart />
+            {/* </IconLink> */}
+          </ItemIcon>
+        </ListIcon>
+      </Sidebar>
+
+      <Main>
+        <MainWrap>
+          <Outlet />
+        </MainWrap>
+      </Main>
+
+      <Footer>
+        <Text>© Copyright</Text>
+      </Footer>
     </>
   );
 };

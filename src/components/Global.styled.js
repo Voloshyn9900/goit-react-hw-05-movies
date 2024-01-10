@@ -3,6 +3,7 @@ import 'modern-normalize';
 
 export const GlobalStyle = createGlobalStyle`
 
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,6 +12,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(189, 190, 192);
+
+
+    /* Стилизация вебкитовского скроллбара */
+  &::-webkit-scrollbar {
+    background-color: #151515;
+    width: 10px; /* Ширина скроллбара */
+  }
+
+  /* Трек скроллбара */
+  &::-webkit-scrollbar-track {
+    background-color: #898989; /* Цвет фона трека */
+
+  }
+
+  /* Цвет ручки (ползунка) скроллбара */
+  &::-webkit-scrollbar-thumb {
+    background-color: #898989; /* Цвет ручки скроллбара */
+    border-radius: 3px; /* Закругление углов ручки */
+    border: 4px solid #898989; /* Обводка ручки скроллбара */
+  }
 }
 
 body::-webkit-scrollbar {
