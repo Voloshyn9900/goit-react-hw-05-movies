@@ -1,10 +1,10 @@
 import { Suspense, lazy } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { PreLoader } from './PreLoader/PreLoader';
 import { AppLayout } from './SharedLayout';
 import { MovieDetailsCast } from './Cast/Cast';
 import { MovieDetailsReviews } from './Reviews/Reviews';
-import { useEffect } from 'react';
+
 
 
 const HomePage = lazy(() => import('pages/HomePage'));

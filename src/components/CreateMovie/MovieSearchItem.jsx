@@ -6,14 +6,17 @@ import {
   NameMov,
   DescriptionMov,
 } from './MovieSearchItem.styled';
+import { useLocation } from 'react-router-dom';
 
 export const MovieItem = ({ movies }) => {
+  const location = useLocation();
+
   return (
     <>
       {movies.map(movie => {
         return (
           <li key={movie.id}>
-            <LinkStyle to={`${movie.id}`}>
+            <LinkStyle to={`${movie.id}`} state={{ from: location }}>
               <MovieItemStyle>
                 <ImgMovie
                   src={`https://image.tmdb.org/t/p/w500/${

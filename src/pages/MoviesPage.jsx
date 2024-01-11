@@ -48,7 +48,7 @@ export default function MoviesPage() {
           laudantium distinctio unde ex aliquid possimus eos accusantium illo
           dicta. Dolores, provident harum.
         </Text>
-        <SearchMovies onSubmit={handleSubmit} />
+        <SearchMovies onSubmit={handleSubmit} LinkQuery={query} />
       </HeroCont>
       {movies.length > 0 ? (
         <MovieList movies={movies} />

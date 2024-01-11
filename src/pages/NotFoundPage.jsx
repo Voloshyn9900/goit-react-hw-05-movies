@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { HeroCont, Title, LinkStyle } from './NotFoundPage.styled';
 
 export default function NotFoundPage() {

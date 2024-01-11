@@ -17,22 +17,14 @@ export default function MovieDetailsPage() {
   const [movie, setMovie] = useState();
   const navigate = useNavigate();
   const location = useLocation();
-  console.log('useLocation', location);
+  const backLinkRef = useRef(location.state?.from ?? '/');
 
-  const backLinkRef = useRef(location);
-  console.log(backLinkRef);
-  // const location = useLocation();
-  // console.log("location ", location);
-  // const backLinkRef = useRef(location);
-  // console.log('backLinkRef ', backLinkRef);
-  const params = useParams();
-  console.log('useParams ', params);
 
-  // console.log('QuizDetailsPage location', location);
-  // console.log('QuizDetailsPage backLinkRef', backLinkRef.current);
+  const { movieId } = useParams();
+  
 
   useEffect(() => {
-    const getMovieDetailsById = async movieId => {
+    const getMovieDetailsById = async () => {
       try {
         const response = await fetchGetMovieDetailsById(movieId);
         setMovie(response);
@@ -41,15 +33,15 @@ export default function MovieDetailsPage() {
         console.error(error);
       }
     };
-    getMovieDetailsById(params.movieId);
-  }, [params.movieId, navigate]);
+    getMovieDetailsById();
+  }, [movieId, navigate]);
 
   return (
     <>
       {movie ? (
         <HeroCont>
           <Wraper>
-            <LinkBack>Back to list</LinkBack>
+            <LinkBack to={backLinkRef.current}>Back to list</LinkBack>
             <Title>{movie.title}</Title>
             <ImgMovie
               src={`https://image.tmdb.org/t/p/w500/${

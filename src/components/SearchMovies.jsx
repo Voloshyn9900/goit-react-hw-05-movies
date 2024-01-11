@@ -5,8 +5,8 @@ import {
 } from '../pages/MoviesPage.styled';
 import { useState } from 'react';
 
-export const SearchMovies = ({ onSubmit }) => {
-  const [query, setQuery] = useState('');
+export const SearchMovies = ({ onSubmit, LinkQuery }) => {
+  const [query, setQuery] = useState(LinkQuery);
 
   const handleSubmit = e => {
     e.preventDefault();
