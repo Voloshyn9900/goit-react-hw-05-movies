@@ -9,19 +9,18 @@ import {
   ListLink,
   LinkBack,
 } from './MovieDetailsPage.styled';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { fetchGetMovieDetailsById } from '../api';
-import {
-  Outlet,
-  useLocation,
-  useParams,
-} from 'react-router-dom';
+import { useNavigate, Outlet, useLocation, useParams } from 'react-router-dom';
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState();
-
+  const navigate = useNavigate();
   const location = useLocation();
   console.log('useLocation', location);
+
+  const backLinkRef = useRef(location);
+  console.log(backLinkRef);
   // const location = useLocation();
   // console.log("location ", location);
   // const backLinkRef = useRef(location);
@@ -38,12 +37,12 @@ export default function MovieDetailsPage() {
         const response = await fetchGetMovieDetailsById(movieId);
         setMovie(response);
       } catch (error) {
+        navigate('*');
         console.error(error);
       }
     };
     getMovieDetailsById(params.movieId);
-  }, [params.movieId]);
-
+  }, [params.movieId, navigate]);
 
   return (
     <>

@@ -1,11 +1,14 @@
 import { Link } from 'react-router-dom';
+import { HeroCont, Title, LinkStyle } from './NotFoundPage.styled';
 
 export default function NotFoundPage() {
   return (
     <>
-      <h1>
-        Not found page 404. <Link to={'/'}>Link to home</Link>{' '}
-      </h1>
+      <HeroCont>
+        <Title>
+          Not found page 404. <LinkStyle to={'/'}>Link to home</LinkStyle>
+        </Title>
+      </HeroCont>
     </>
   );
 }

@@ -1,23 +1,23 @@
-// import React, { useEffect, useState } from 'react';
 import { fetchSerchMovies } from 'api';
 import { MovieList } from 'components/CreateMovie/MovieSearchList';
 import {
   HeroCont,
   Title,
   Text,
-  BtnSearch,
-  InputSearch,
-  InputWraper,
   WarningMsg,
 } from './MoviesPage.styled';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { SearchMovies } from 'components/SearchMovies';
 
 export default function MoviesPage() {
-  const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+   const query = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    if (query === '') {
+    if (query === '' || query === null) {
       return;
     }
     
@@ -34,12 +34,8 @@ export default function MoviesPage() {
   }, [query]);
 
 
-  const submitTopic = e => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const inputValue = formData.get('movieTitle');
-    setQuery(() => inputValue);
-    console.log(inputValue);
+  const handleSubmit = searchQuery => {
+    setSearchParams(searchQuery === '' ? {} : { query: searchQuery });
   };
 
   return (
@@ -52,16 +48,7 @@ export default function MoviesPage() {
           laudantium distinctio unde ex aliquid possimus eos accusantium illo
           dicta. Dolores, provident harum.
         </Text>
-        <form onSubmit={submitTopic}>
-          <InputWraper>
-            <InputSearch
-              name="movieTitle"
-              type="text"
-              placeholder="Movie title"
-            />
-            <BtnSearch type="submit">Search</BtnSearch>
-          </InputWraper>
-        </form>
+        <SearchMovies onSubmit={handleSubmit} />
       </HeroCont>
       {movies.length > 0 ? (
         <MovieList movies={movies} />
