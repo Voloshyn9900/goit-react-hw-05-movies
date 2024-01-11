@@ -15,31 +15,33 @@ import { useState, useEffect } from 'react';
 export default function MoviesPage() {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
-  const [submitted, setSubmitted] = useState(false);
-  const messageTitle = `No movies found for keyword '${query}'`;
 
-  const getSerchMovies = async () => {
-    try {
-      const response = await fetchSerchMovies(query);
-      setMovies(response.results);
-      setSubmitted(true); 
-    } catch (error) {
-      console.error(error);
+  useEffect(() => {
+    if (query === '') {
+      return;
     }
-  };
+    
+    const fetchData = async () => {
+      try {
+        const response = await fetchSerchMovies(query);
+        setMovies(response.results);
+      } catch (error) {
+        console.error(error);
+      }
+    };
 
-  const updateTopic = e => {
-    setQuery(e.target.value);
-  };
+    fetchData();
+  }, [query]);
+
 
   const submitTopic = e => {
     e.preventDefault();
-    setSubmitted(false);
-    getSerchMovies();
+    const formData = new FormData(e.target);
+    const inputValue = formData.get('movieTitle');
+    setQuery(() => inputValue);
+    console.log(inputValue);
   };
 
-  console.log(movies);
-  console.log(query);
   return (
     <>
       <HeroCont>
@@ -53,18 +55,19 @@ export default function MoviesPage() {
         <form onSubmit={submitTopic}>
           <InputWraper>
             <InputSearch
-              value={query}
+              name="movieTitle"
               type="text"
               placeholder="Movie title"
-              onChange={e => updateTopic(e)}
             />
             <BtnSearch type="submit">Search</BtnSearch>
           </InputWraper>
         </form>
       </HeroCont>
-      {submitted && movies.length > 0 ? (
+      {movies.length > 0 ? (
         <MovieList movies={movies} />
-      ) : (<WarningMsg>No movie found for your request!</WarningMsg>)}
+      ) : (
+        <WarningMsg>No movie found for your request!</WarningMsg>
+      )}
     </>
   );
 }
