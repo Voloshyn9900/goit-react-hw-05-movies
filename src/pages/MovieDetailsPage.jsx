@@ -12,6 +12,7 @@ import {
 import { useEffect, useState, useRef } from 'react';
 import { fetchGetMovieDetailsById } from '../api';
 import { useNavigate, Outlet, useLocation, useParams } from 'react-router-dom';
+import noPosterImage from '../img/no-poster.png';
 
 export default function MovieDetailsPage() {
   const [movie, setMovie] = useState();
@@ -44,10 +45,13 @@ export default function MovieDetailsPage() {
             <LinkBack to={backLinkRef.current}>Back to list</LinkBack>
             <Title>{movie.title}</Title>
             <ImgMovie
-              src={`https://image.tmdb.org/t/p/w500/${
-                movie.poster_path || movie.backdrop_path
-              }`}
-              alt={movie.title}
+              src={
+                movie.poster_path !== null
+                  ? `https://image.tmdb.org/t/p/w500/${
+                      movie.backdrop_path || movie.poster_path
+                    }`
+                  : noPosterImage
+              }
             />
             <Text>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit

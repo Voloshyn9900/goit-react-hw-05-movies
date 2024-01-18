@@ -6,7 +6,7 @@ import { fetchTrendMovies } from 'api';
 import { useEffect, useState } from 'react';
 
 export default function HomePage() {
-  console.log(window.innerWidth);
+  // console.log(window.innerWidth);
 
   const [movies, setMovies] = useState([]);
   const thisWeekTitle = 'NEW POPULAR LIST THIS WEEK';

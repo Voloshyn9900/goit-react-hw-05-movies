@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react';
 import { fetchGetMovieCastById } from '../../api';
 import { useParams } from 'react-router-dom';
 import { Text, ImgMovie, Wraper, CastList, CastItem, WraperImg } from './Cast.styled';
+import noPersonImage from '../../img/no-person.png';
 
 export const MovieDetailsCast = () => {
   const [cast, setCast] = useState([]);
 
   const params = useParams();
-  console.log('params ', params);
 
   useEffect(() => {
     const getMovieCastById = async movieId => {
@@ -31,9 +31,11 @@ export const MovieDetailsCast = () => {
             <CastItem key={item.id}>
               <WraperImg>
                 <ImgMovie
-                  src={`https://image.tmdb.org/t/p/w500/${
-                    item.profile_path || 'placeholder-url'
-                  }`}
+                  src={
+                    item.profile_path !== null
+                      ? `https://image.tmdb.org/t/p/w500/${item.profile_path}`
+                      : noPersonImage
+                  }
                   alt={item.name}
                 />
               </WraperImg>

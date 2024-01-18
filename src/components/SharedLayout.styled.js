@@ -1,5 +1,4 @@
-import styled, { css } from 'styled-components';
-import imgHero from '../hero.jpg';
+import { styled } from 'styled-components';
 
 import { NavLink } from 'react-router-dom';
 
@@ -175,43 +174,5 @@ export const Footer = styled.footer`
 
 // -------------------------------------------------
 
-export const SectionMain = styled.section`
-  background: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
-    url('../hero.jpg');
 
-  /* background-image: url("../hero.jpg"); */
 
-  ${props => {
-    return css`
-      color: white;
-      background: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
-        url(${imgHero});
-    `;
-  }}
-
-  //height: ${props => (props.useHomeLayout ? '85vh' : '100%')};
-
-  /* Задаем цвет фона в случае, если изображение не загрузится или будет прозрачным */
-  background-color: #f0f0f0;
-  /* Позволяет управлять положением фона */
-  background-position: center center;
-  /* Масштабирует изображение так, чтобы оно занимало всю доступную область */
-  background-size: cover;
-  /* Повторяет изображение по горизонтали и вертикали */
-  background-repeat: no-repeat;
-
-  scrollbar-color: transparent transparent; /* Firefox */
-  scrollbar-width: thin; /* Firefox */
-`;
-
-export const Section = styled.section`
-  padding-top: 20px;
-  padding-bottom: 20px;
-`;
-
-export const Container = styled.div`
-  max-width: 1300px;
-  max-height: 100%;
-  margin-left: auto;
-  margin-right: auto;
-`;

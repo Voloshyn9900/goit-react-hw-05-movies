@@ -5,6 +5,7 @@ import {
   LinkStyle,
   NameMov,DescriptionMov
 } from './MovieItem.styled';
+import noPosterImage from '../../img/no-poster.png';
 import { useLocation } from 'react-router-dom';
 
 export const MovieItem = ({ movies }) => {
@@ -16,9 +17,13 @@ export const MovieItem = ({ movies }) => {
           <MovieItemStyle key={movie.id}>
             <LinkStyle to={`movies/${movie.id}`} state={{ from: location }}>
               <ImgMovie
-                src={`https://image.tmdb.org/t/p/w500/${
-                  movie.backdrop_path || movie.poster_path
-                }`}
+                src={
+                  movie.poster_path !== null
+                    ? `https://image.tmdb.org/t/p/w500/${
+                        movie.backdrop_path || movie.poster_path
+                      }`
+                    : noPosterImage
+                }
                 alt={movie.title}
               />
               <NameMov>{movie.title}</NameMov>

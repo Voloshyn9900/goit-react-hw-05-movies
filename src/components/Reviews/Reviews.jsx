@@ -14,7 +14,6 @@ export const MovieDetailsReviews = () => {
   const [reviews, setReviews] = useState([]);
 
   const params = useParams();
-  console.log('params ', params);
 
   useEffect(() => {
     const getMovieReviewsById = async movieId => {
